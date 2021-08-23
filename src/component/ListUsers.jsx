@@ -1,44 +1,37 @@
 import React from 'react'
-
-import ReactPaginate from "react-paginate";
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import BootstrapTable from 'react-bootstrap-table-next';
+import * as ReactBootStrap from "react-bootstrap";
+import { useEffect } from 'react';
 const ListUsers = ({users}) => {
+
+    const [filteredArray,setFilteredArray] = React.useState(users)
+
+    const onFilterChange=(e)=>{
+        let filterQuery = e.target.value.split(' ')
+        filterQuery = filterQuery.join('+')
+        //fetch(`url?category=${filterQuery}`)
+        //array.filter(users=>{
+        //     return (users.name.toLowerCase().includes(e.target.value.toLowerCase()))
+        // })
+    }
+    const columns=[
+        {dataField:"name",text:"name"},
+        {dataField:"birthday",text:"Birthday"},
+        {dataField:"status",text:"Status"},
+        {dataField:"occupation",text:"Occupation"}
+    ];
     return (
         <div>
-            <h2>List of Characters</h2>
-            <div className="container-fluid mt-2">
-                <div className="row">
-                    
-                {
-
-                        users.map((curElem) => {
-                        
-                            
-                        return (
-                            <>
-                        <div className="col-10 col-md-4 mt-5 " key={curElem.char_id}>
-                      <span>{curElem.name}</span>
-                      <div>{curElem.status}</div>
-                      <div>{curElem.birthday}</div>
-                      <div>{
-                          curElem.occupation.map((ele)=>{
-                              return(
-                                  <div>{ele}</div>
-                              )
-
-                          })
-                          }</div>
-                    </div>
-                       
-                        
-                    </>
-                        )
-                })        
-
-                }
-                    
-                </div>
-            </div>
-        </div>
+           
+            <BootstrapTable
+                keyField="name"
+                data={users}
+                columns={columns}
+                pagination={ paginationFactory() }
+            />
+            
+           </div>
     )
 }
 

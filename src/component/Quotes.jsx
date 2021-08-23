@@ -35,7 +35,10 @@ return(
           return(
           <>
               <div key={ele.quote_id}></div>
-              {ele.quote}
+              <div style={{fontFamily:'monospace'}}>
+                  
+              {'"'+ele.quote+'"'}
+              </div>
          </> )
       })
   }

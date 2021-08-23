@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 .App {
   text-align: center;
 }
@@ -34,11 +35,15 @@
 }
 .card {
   width: 450px;
+  height: auto;
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   background-color: #fff;
   margin: auto;
 }
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
